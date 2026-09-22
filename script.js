@@ -21,20 +21,3 @@ document.querySelector('.features').innerHTML = `
   <article><span class="num">04</span><h3>Transportasi</h3><p>Rincian transportasi diinformasikan berdasarkan paket perjalanan.</p></article>
   <article><span class="num">05</span><h3>Konsumsi</h3><p>Ketentuan konsumsi dapat dikonfirmasi bersama admin sebelum mendaftar.</p></article>
   <article><span class="num">06</span><h3>Layanan jamaah</h3><p>Tim admin siap membantu kebutuhan informasi jamaah.</p></article>`;
-
-const photoFrame = document.querySelector('.arch-photo');
-photoFrame.innerHTML = `
-  <img class="hero-slide is-active" src="images/alasan-memilih-alfatih.jpg" alt="Dokumentasi jamaah bersama Alfatih Umroh" />
-  <img class="hero-slide" src="images/umroh-juli-2026.webp" alt="Dokumentasi informasi perjalanan Alfatih Umroh" />
-  <img class="hero-slide" src="images/paket-akhir-tahun-2026.jpg" alt="Dokumentasi layanan perjalanan Alfatih Umroh" />`;
-const slider = document.querySelector('.hero-visual');
-slider.insertAdjacentHTML('beforeend', `<div class="slider-controls"><button type="button" class="slide-control" aria-label="Foto sebelumnya">←</button><button type="button" class="slide-control" aria-label="Foto berikutnya">→</button></div>`);
-const slides = [...document.querySelectorAll('.hero-slide')];
-let activeSlide = 0;
-const showSlide = (index) => { activeSlide = (index + slides.length) % slides.length; slides.forEach((slide, i) => slide.classList.toggle('is-active', i === activeSlide)); };
-const controls = document.querySelectorAll('.slide-control');
-controls[0].addEventListener('click', () => showSlide(activeSlide - 1));
-controls[1].addEventListener('click', () => showSlide(activeSlide + 1));
-let sliderTimer = setInterval(() => showSlide(activeSlide + 1), 5000);
-slider.addEventListener('mouseenter', () => clearInterval(sliderTimer));
-slider.addEventListener('mouseleave', () => { sliderTimer = setInterval(() => showSlide(activeSlide + 1), 5000); });
